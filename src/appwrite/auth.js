@@ -1,18 +1,13 @@
 // Here, we are making a service of the authentication system so that, if we need to pluck Appwrite out from the system, the system doesn't affect much
-import conf from "../config/conf.js"
-import { Client, Account, ID } from "appwrite";
+import conf from "../conf/conf.js"
+import client from "../lib/appwriteClient.js"
+import {Account, ID } from "appwrite";
 
 export class AuthService{
-    // vars
-    client = new Client();
     account;
 
     constructor(){
-        this.client
-            .setEndpoint(conf.appwriteUrl)
-            .setProject(conf.appwriteProjectId);
-
-        this.account = new Account(this.client);
+        this.account = new Account(client);
     }
 
     async createAccount({name, email, password}){
@@ -20,21 +15,19 @@ export class AuthService{
             const userAccount = await this.account.create(ID.unique(), name, email, password)
 
             if(userAccount){
-                this.login({email, password})
-
-            }else{
-                return userAccount;
+                return await this.login({email, password})
             }
+            return userAccount;
         }catch(error){
-            throw new Error(error);
+            throw err
         }
     }
 
     async login({email, password}){
         try{
-            return await account.createEmailPasswordSession({email, password});
+            return await this.account.createEmailPasswordSession({email, password});
         }catch(error){
-            throw new Error(error);
+            throw err
         }
     }
 
@@ -43,7 +36,7 @@ export class AuthService{
             const user = await this.account.get();
             return user
         } catch (err) {
-            throw new Error(err)
+            throw err
         }
 
         // A safe option if any error occurs in the try catch or, user is not found inside the try block
@@ -54,7 +47,7 @@ export class AuthService{
         try {
             return await this.account.deleteSessions();
         } catch (err) {
-            throw new Error(err)
+            throw err
         }
 
         return null;
