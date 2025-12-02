@@ -1,5 +1,4 @@
 // Here, we are making a service of the authentication system so that, if we need to pluck Appwrite out from the system, the system doesn't affect much
-import conf from "../conf/conf.js"
 import client from "../lib/appwriteClient.js"
 import {Account, ID } from "appwrite";
 
@@ -12,21 +11,21 @@ export class AuthService{
 
     async createAccount({name, email, password}){
         try{
-            const userAccount = await this.account.create(ID.unique(), name, email, password)
+            const userAccount = await this.account.create(ID.unique(), email, password, name)
 
             if(userAccount){
                 return await this.login({email, password})
             }
             return userAccount;
-        }catch(error){
+        }catch(err){
             throw err
         }
     }
 
     async login({email, password}){
         try{
-            return await this.account.createEmailPasswordSession({email, password});
-        }catch(error){
+            return await this.account.createEmailPasswordSession(email, password);
+        }catch(err){
             throw err
         }
     }
@@ -39,7 +38,7 @@ export class AuthService{
             throw err
         }
 
-        // A safe option if any error occurs in the try catch or, user is not found inside the try block
+        // A safe option if any err occurs in the try catch or, user is not found inside the try block
         return null;
     }
 
