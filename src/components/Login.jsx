@@ -12,7 +12,7 @@ export default function Login() {
     const { register, handleSubmit } = useForm()
     const [error, setError] = useState("")
 
-    const login = async () => {
+    const login = async (data) => {
         setError("")//It's an ideal practice to clear the error state
         try {
             const session = await authService.login(data)
@@ -57,21 +57,21 @@ export default function Login() {
                         label="email"
                         placeholder="Enter your email address"
                         type="email"
-                        {...register("email"), {
-                            required: true,
+                        {...register("email", {
+                            required: "Email is required",
                             validate: {
                                 matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
-                                .test(value) || "Email address must be a valid address",
+                                    .test(value) || "Email address must be a valid address"
                             }
-                        }}
+                        })}
                     />
                     <Input
                         label="password"
                         type="password"
                         placeholder="Enter password"
-                        {...register("password"), {
+                        {...register("password", {
                             required: true
-                        }}
+                        })}
                     />
                     <Button
                         type="submit"
