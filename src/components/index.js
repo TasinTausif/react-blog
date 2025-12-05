@@ -6,20 +6,26 @@ import Container from "./container/Container";
 import Input from "./Input"
 import Button from "./Button"
 import Login from "./Login"
+import Signup from "./Signup"
 import PostCard from "./PostCard"
+import PostForm from "./post-form/PostForm";
 import Select from "./Select"
 import RTE from "./RTE"
+import AuthLayout from "./layouts/AuthLayout"
 
 export {
     Header, 
     Footer,
+    Container,
     Logo,
     LogoutBtn,
-    Container,
     Input,
+    Select,
     Button,
     Login,
+    Signup,
     PostCard,
-    Select,
-    RTE
+    PostForm,
+    RTE,
+    AuthLayout
 }
