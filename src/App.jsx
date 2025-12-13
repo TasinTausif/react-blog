@@ -14,7 +14,7 @@ export default function App() {
 	// console.log(process.env.REACT_APP_APPWRITE_URL)
 
 	// if project is created with vite, value of env is fetched in this way
-	// console.log(import.meta.env.VITE_APPWRITE_URL)
+	// console.log(import.meta.env.VITE_APPWRITE_ENDPOINT)
 
 	const [loading, setLoading] = useState(true)
 	const dispatch = useDispatch()
@@ -36,7 +36,7 @@ export default function App() {
 			<div className="w-full block">
 				<Header/>
 				<main>
-					Todo: {/* <Outlet/> */}
+					<Outlet/>
 				</main>
 				<Footer/>
 			</div>
