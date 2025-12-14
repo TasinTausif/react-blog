@@ -1,5 +1,6 @@
 import { Editor } from '@tinymce/tinymce-react'
 import { Controller } from 'react-hook-form'
+import conf from '../conf/conf.js'
 
 // Here, control is coming from react-hook-form and it is responsible to transfer the states of this inputs to the original form
 export default function RTE({ name, control, label, defaultValue = "" }) {
@@ -12,6 +13,7 @@ export default function RTE({ name, control, label, defaultValue = "" }) {
                 control={control}
                 render={({ field: { onChange } }) => (
                     <Editor
+                        apiKey={conf.tinymceApiKey}
                         initialValue={defaultValue}
                         init={{
                             initialValue: defaultValue,

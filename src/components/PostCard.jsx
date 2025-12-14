@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 export default function PostCard({ $id, title, featuredImage }) {
 	return (
 		// Link's url starts from the current position, so we don't need to give full path
-		<Link to={`/posts/${$id}`}>
+		<Link to={`/post/${$id}`}>
 			<div className='w-full bg-gray-100 rounded-xl p-4'>
 				<div className='w-full justify-center mb-4'>
 					<img

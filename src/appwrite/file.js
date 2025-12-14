@@ -23,26 +23,27 @@ export class FileService {
 
     async deleteFile(fileId) {
         try {
-            return await this.storage.deleteFile(
+            await this.storage.deleteFile(
                 conf.appwriteBucketId,
                 fileId
             );
-
             return true;
         } catch (err) {
-            throw err
+            console.log("Appwrite service :: deleteFile :: error", err);
             return false;
         }
     }
 
     getFilePreview(fileId) {
         try {
-            return this.storage.getFilePreview(
+            const result = this.storage.getFilePreview(
                 conf.appwriteBucketId,
                 fileId
             );
+            return result.href ? result.href : result.toString();
         } catch (err) {
-            throw err
+             console.log("Appwrite service :: getFilePreview :: error", err);
+             return null;
         }
     }
 }

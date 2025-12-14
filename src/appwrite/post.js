@@ -24,13 +24,14 @@ export class PostService {
 
     async updatePost(slug, { title, content, featuredImage, status }) {
         try {
-            return await this.databases.upsertDocument(
+            return await this.databases.updateDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteTableId,
                 slug,
                 { title, content, featuredImage, status }
             )
         } catch (err) {
+            console.log("Appwrite service :: updatePost :: error", err);
             throw err
         }
     }
@@ -42,14 +43,11 @@ export class PostService {
                 conf.appwriteTableId,
                 slug,
             );
-
             return true;
         } catch (err) {
-            throw err
+            console.log("Appwrite service :: deletePost :: error", err);
             return false
         }
-
-        return false
     }
 
     async getPost(slug) {

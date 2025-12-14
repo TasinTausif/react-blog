@@ -36,7 +36,7 @@ export default function PostForm({ post }) {
             })
 
             if (dbPost) {
-                navigate(`post/${dbPost.$id}`)
+                navigate(`/post/${dbPost.$id}`)
             }
         } else {
             const file = await fileService.uploadFile(data.image[0])
@@ -49,7 +49,7 @@ export default function PostForm({ post }) {
             })
 
             if (dbPost) {
-                navigate(`post/${dbPost.$id}`)
+                navigate(`/post/${dbPost.$id}`)
             }
         }
     }
@@ -60,7 +60,8 @@ export default function PostForm({ post }) {
                 .trim()
                 .toLowerCase()
                 .replace(/[^a-zA-Z\d\s]+/g, "-")
-                .replace(/\s/g, "-");
+                .replace(/\s/g, "-")
+                .substring(0, 36);
 
         return ""
     }, [])
@@ -111,7 +112,7 @@ export default function PostForm({ post }) {
                 {post && (
                     <div className="w-full mb-4">
                         <img
-                            src={appwriteService.getFilePreview(post.featuredImage)}
+                            src={fileService.getFilePreview(post.featuredImage)}
                             alt={post.title}
                             className="rounded-lg"
                         />
