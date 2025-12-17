@@ -13,21 +13,15 @@ export default function AllPost() {
         })
     }, [])
 
-    // Curly braces can be avoided if nothing is going to return
-    const postsData = posts.map(post => (
-        <div
-            key={post.$id}
-            className="py-2 w-1/4"
-        >
-            <PostCard {...post} />
-        </div>
-    ))
-
     return (
         <div className="w-full py-8">
             <Container>
-                <div className="flex flex-wrap">
-                    {postsData}
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+                    {posts.map((post) => (
+                        <div key={post.$id} className='p-2'>
+                            <PostCard {...post} />
+                        </div>
+                    ))}
                 </div>
             </Container>
         </div>

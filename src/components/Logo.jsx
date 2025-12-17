@@ -1,9 +1,11 @@
-import React from 'react'
+import reactLogo from '../assets/react-blog.png'
 
-function Logo({width = '100px'}) {
-  return (
-    <div>Logo</div>
-  )
+export default function Logo() {
+	return (
+		<img
+			src={reactLogo}
+			alt="logo"
+			className="w-24 h-auto"
+		/>
+	)
 }
-
-export default Logo

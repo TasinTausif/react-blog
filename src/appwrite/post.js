@@ -4,13 +4,13 @@ import { Query } from "appwrite"
 
 export class PostService {
 
-    async createPost({ title, slug, content, featuredImage, status, userId }) {
+    async createPost({ title, slug, content, featuredImage, status, userId, authorName }) {
         try {
             return await databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteTableId,
                 slug,
-                { title, content, featuredImage, status, userId }
+                { title, content, featuredImage, status, userId, authorName }
             )
         } catch (err) {
             throw err
