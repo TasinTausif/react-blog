@@ -22,6 +22,7 @@ export default function AllPost() {
     return (
         <div className="w-full py-8">
             <Container>
+                <span className="text-sm text-red-600 px-3 py-1 rounded-md inline-block">** Image preview is unavailable due to Appwrite plan limitations.</span>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
                     {allPosts}
                 </div>

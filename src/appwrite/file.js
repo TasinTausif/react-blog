@@ -1,17 +1,12 @@
 import conf from "../conf/conf.js"
-import { client } from "../lib/appwrite.js"
-import { ID, Storage } from "appwrite";
+import { storage } from "../lib/appwrite.js"
+import { ID } from "appwrite";
 
 export class FileService {
-    storage;
-
-    constructor() {
-        this.storage = new Storage(client)
-    }
 
     async uploadFile(file) {
         try {
-            return await this.storage.createFile(
+            return await storage.createFile(
                 conf.appwriteBucketId,
                 ID.unique(),
                 file
@@ -23,7 +18,7 @@ export class FileService {
 
     async deleteFile(fileId) {
         try {
-            await this.storage.deleteFile(
+            await storage.deleteFile(
                 conf.appwriteBucketId,
                 fileId
             );
@@ -36,7 +31,7 @@ export class FileService {
 
     getFile(fileId){
         try {
-            const result = this.storage.getFileView(
+            const result = storage.getFileView(
                 conf.appwriteBucketId,
                 fileId
             );
@@ -48,7 +43,7 @@ export class FileService {
 
     getFilePreview(fileId) {
         try {
-            const result = this.storage.getFilePreview(
+            const result = storage.getFilePreview(
                 conf.appwriteBucketId,
                 fileId
             );
