@@ -1,5 +1,5 @@
 import conf from "../conf/conf.js"
-import client from "../lib/appwriteClient.js"
+import {client} from "../lib/appwrite.js"
 import { ID, Storage } from "appwrite";
 
 export class FileService {
