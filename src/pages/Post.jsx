@@ -13,7 +13,7 @@ export default function Post() {
 
     const userData = useSelector((state) => state.auth.userData);
 
-    const isAuthor = post && userData ? post.userId === userData.$id : false;
+    const isAuthor = post && userData ? post.user_id === userData.$id : false;
 
     useEffect(() => {
         if (slug) {
@@ -38,7 +38,7 @@ export default function Post() {
             <Container>
                 <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2 bg-white shadow-sm">
                     <img
-                        src={fileService.getFilePreview(post.featuredImage)}
+                        src={fileService.getFile(post.featuredImage)}
                         alt={post.title}
                         className="rounded-xl w-full max-h-[500px] object-cover"
                     />

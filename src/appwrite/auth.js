@@ -1,9 +1,7 @@
 import { account } from '../lib/appwrite.js';
 import { ID } from "appwrite";
 
-
 export class AuthService {
-
     async createAccount({email, password, name}) {
         try {
             const userAccount = await account.create(

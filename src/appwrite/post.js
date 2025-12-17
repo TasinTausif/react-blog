@@ -25,7 +25,7 @@ export class PostService {
                 { title, content, featuredImage, status }
             )
         } catch (err) {
-            console.log("Appwrite service :: updatePost :: error", err);
+            console.log("Appwrite updatePost error", err);
             throw err
         }
     }
@@ -39,7 +39,7 @@ export class PostService {
             );
             return true;
         } catch (err) {
-            console.log("Appwrite service :: deletePost :: error", err);
+            console.log("Appwrite deletePost error", err);
             return false
         }
     }

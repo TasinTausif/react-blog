@@ -29,8 +29,20 @@ export class FileService {
             );
             return true;
         } catch (err) {
-            console.log("Appwrite service :: deleteFile :: error", err);
+            console.log("Appwrite deleteFile error", err);
             return false;
+        }
+    }
+
+    getFile(fileId){
+        try {
+            const result = this.storage.getFileView(
+                conf.appwriteBucketId,
+                fileId
+            );
+            return result.href ? result.href : result.toString();
+        } catch (error) {
+            
         }
     }
 
@@ -42,11 +54,11 @@ export class FileService {
             );
             return result.href ? result.href : result.toString();
         } catch (err) {
-            console.log("Appwrite service :: getFilePreview :: error", err);
+            console.log("Appwrite getFilePreview error", err);
             return null;
         }
     }
 }
 
-export const fileService = new FileService()
+const fileService = new FileService()
 export default fileService

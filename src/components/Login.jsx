@@ -37,6 +37,42 @@ export default function Login() {
                     </span>
                 </div>
                 <h2 className="text-center text-2xl font-bold leading-tight">Sign in to your account</h2>
+                {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
+                {/* When submitting the form, handleSubmit will grab all the states from the input fields and pass it into login func */}
+                <form
+                    onSubmit={handleSubmit(login)}
+                    className='mt-8'
+                >
+                    <div className="space-y-5">
+                        {/* Register will hold the value for individual items */}
+                        <Input
+                            label="Email"
+                            placeholder="Enter your email address"
+                            type="email"
+                            {...register("email", {
+                                required: "Email is required",
+                                validate: {
+                                    matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
+                                        .test(value) || "Email address must be a valid address"
+                                }
+                            })}
+                        />
+                        <Input
+                            label="Password"
+                            type="password"
+                            placeholder="Enter password"
+                            {...register("password", {
+                                required: true
+                            })}
+                        />
+                        <Button
+                            type="submit"
+                            className="w-full mt-4"
+                        >
+                            Sign In
+                        </Button>
+                    </div>
+                </form>
                 <p className="mt-2 text-center text-base text-black/60">
                     Don&apos;t have any account?&nbsp;
                     <Link
@@ -46,40 +82,6 @@ export default function Login() {
                         Sign Up
                     </Link>
                 </p>
-                {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
-                {/* When submitting the form, handleSubmit will grab all the states from the input fields and pass it into login func */}
-                <form
-                    onSubmit={handleSubmit(login)}
-                    className='mt-8'
-                >
-                    {/* Register will hold the value for individual items */}
-                    <Input
-                        label="email"
-                        placeholder="Enter your email address"
-                        type="email"
-                        {...register("email", {
-                            required: "Email is required",
-                            validate: {
-                                matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
-                                    .test(value) || "Email address must be a valid address"
-                            }
-                        })}
-                    />
-                    <Input
-                        label="password"
-                        type="password"
-                        placeholder="Enter password"
-                        {...register("password", {
-                            required: true
-                        })}
-                    />
-                    <Button
-                        type="submit"
-                        className="w-full"
-                    >
-                        Sign In
-                    </Button>
-                </form>
             </div>
         </div>
     )
