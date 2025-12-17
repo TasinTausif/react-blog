@@ -45,7 +45,7 @@ export default function PostForm({ post }) {
 
             const dbPost = await postService.createPost({
                 ...data,
-                userId: userData.$id,
+                user_id: userData.$id,
                 authorName: userData.name || "Anonymous"
             })
 

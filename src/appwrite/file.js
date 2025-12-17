@@ -1,5 +1,5 @@
 import conf from "../conf/conf.js"
-import {client} from "../lib/appwrite.js"
+import { client } from "../lib/appwrite.js"
 import { ID, Storage } from "appwrite";
 
 export class FileService {
@@ -42,8 +42,8 @@ export class FileService {
             );
             return result.href ? result.href : result.toString();
         } catch (err) {
-             console.log("Appwrite service :: getFilePreview :: error", err);
-             return null;
+            console.log("Appwrite service :: getFilePreview :: error", err);
+            return null;
         }
     }
 }
