@@ -38,13 +38,12 @@ export default function Login() {
                 </div>
                 <h2 className="text-center text-2xl font-bold leading-tight">Sign in to your account</h2>
                 {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
-                {/* When submitting the form, handleSubmit will grab all the states from the input fields and pass it into login func */}
                 <form
                     onSubmit={handleSubmit(login)}
                     className='mt-8'
                 >
                     <div className="space-y-5">
-                        {/* Register will hold the value for individual items */}
+                        {/* Register will hold the value for individual items as well as ref, name, onChange and onBlur*/}
                         <Input
                             label="Email"
                             placeholder="Enter your email address"

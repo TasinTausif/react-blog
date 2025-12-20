@@ -1,6 +1,7 @@
 import React, { useId } from 'react'
 
-const Input = React.forwardRef(function Input({
+// ForwardRef receives the ref from the parent and it takes a func as input that takes 2 params. One is the props and 2nd one is the ref. From react 19, forwardRef is not required as ref can be passed from parent to child as props too
+const Input = React.forwardRef(function InputFunc({
     label,
     type = "text",
     className = "",
