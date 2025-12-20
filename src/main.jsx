@@ -37,7 +37,6 @@ const router = createBrowserRouter([
 				path: "/all-posts",
 				element: (
 					<AuthLayout authentication>
-						{" "}
 						<AllPosts />
 					</AuthLayout>
 				),
@@ -46,7 +45,6 @@ const router = createBrowserRouter([
 				path: "/add-post",
 				element: (
 					<AuthLayout authentication>
-						{" "}
 						<AddPost />
 					</AuthLayout>
 				),
@@ -55,7 +53,6 @@ const router = createBrowserRouter([
 				path: "/edit-post/:slug",
 				element: (
 					<AuthLayout authentication>
-						{" "}
 						<EditPost />
 					</AuthLayout>
 				),
@@ -69,9 +66,9 @@ const router = createBrowserRouter([
 ])
 
 createRoot(document.getElementById('root')).render(
-	// <StrictMode>
-	<Provider store={store}>
-		<RouterProvider router={router} />
-	</Provider>
-	// </StrictMode>,
+	<StrictMode>
+		<Provider store={store}>
+			<RouterProvider router={router} />
+		</Provider>
+	</StrictMode>,
 )
